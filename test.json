@@ -1,0 +1,12 @@
+{
+  "name": "yushifu",
+  "age": 18,
+  "isStudent": false,
+  "hobbies": [ "singing", "jumping", "rapping", "basketball" ],
+  "address": {
+    "street": "123 Main Street",
+    "city": "¸¥ÂåÀï´ï",
+    "country": "USA"
+  },
+  "spouse": null
+}
