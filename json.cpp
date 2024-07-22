@@ -101,7 +101,25 @@ std::vector<ConvertableString>& ConvertableString::asArray()
 	std::string tmp;
 	for (int i = 1; i < n - 1; i++)
 	{
-		if (elem[i] == ',')
+		if (elem[i] == '{')
+		{
+			std::stack<char> s;
+			s.push('{');
+			tmp.push_back(elem[i]);
+			i++;
+			while (!s.empty())
+			{
+				tmp.push_back(elem[i]);
+				if (elem[i] == '{')
+					s.push('{');
+				else if (elem[i] == '}')
+					s.pop();
+				i++;
+			}
+			result.push_back(ConvertableString(tmp));
+			tmp.clear();
+		}
+		else if (elem[i] == ',')
 		{
 			if (!checkString(tmp))
 				throw std::invalid_argument(elem + "is not a legal json data");

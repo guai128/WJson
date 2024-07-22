@@ -11,7 +11,12 @@ int main()
 		"\"name\": \"yushifu\","
 		"\"age\" : 18,"
 		"\"isStudent\" : false,"
-		"\"hobbies\" : [\"singing\", \"jumping\", \"rapping\", \"basketball\"],"
+		"\"hobbies\" : [{"
+		"\"street\": \"123 Main Street\","
+		"\"city\" : \"弗洛里达\","
+		"\"country\" : \"USA\""
+		"}, \"abcv\", {"
+		"\"street\": \"123 Main Street\"}],"
 		"\"address\" : {"
 		"\"street\": \"123 Main Street\","
 		"\"city\" : \"弗洛里达\","
@@ -22,6 +27,11 @@ int main()
 
 	json::Json j(json);
 
-	std::cout << j["hobbies"].asArray()[3].asString() << std::endl;
+	for (auto& i : j["hobbies"].asArray())
+	{
+		std::cout << i.asString() << std::endl;
+	}
+
+	std::cout << j["hobbies"].asArray()[0].asJson()["country"].asString() << std::endl;
 	std::cout << j["address"].asJson()["city"].asString() << std::endl;
 }
